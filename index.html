@@ -3,35 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piedra, papel, tijeras</title>
+    <title>Rock, paper, scissors</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="main">
         
-        <h1>PIEDRA, PAPEL, TIJERAS</h1>
+        <h1>ROCK, PAPER, SCISSORS</h1>
         <h2 class="emojis">✊ 🖐️ ✌️</h2>
-        <h2>Introduce aquí tu jugada:</h2>
+        <h2>Select your move:</h2>
         
         <form>
             <select id="select" name="select" class="select_btn js_select">
-                <option value="nada">Selecciona tu jugada</option>
-                <option value="piedra">piedra ✊</option>
-                <option value="papel">papel 🖐️</option>
-                <option value="tijeras">tijeras ✌️</option>
+                <option value="empty">Select your move</option>
+                <option value="rock">rock ✊</option>
+                <option value="paper">paper 🖐️</option>
+                <option value="scissors">scissors ✌️</option>
             </select>
-            <button class="button js_play" type="button">Jugar</button>
-            <button class="hidden button js_reiniciar">Reiniciar</button>
+            <button class="button js_play" type="button">Play</button>
+            <button class="hidden button js_restart">Restart</button>
         </form>
-        <div class="puntos_cpu">
-        <p class="js_puntos_cpu hidden"></p>
+        <div class="score_cpu">
+        <p class="js_score_cpu hidden"></p>
         </div>
         <div class="message">
-            <p class="js_message">¡Vamos a jugar!</p>
+            <p class="js_message">Let's play!</p>
         </div>
         <div class="points">
-            <p>Jugador: <span class="js_player_points">0</span></p>
-            <p>Computadora: <span class="js_cpu_points">0</span></p>
+            <p>Player: <span class="js_player_points">0</span></p>
+            <p>CPU: <span class="js_cpu_points">0</span></p>
         </div>
     </main>
     

@@ -3,67 +3,67 @@
 // VARIABLES
 const btnSelect = document.querySelector(".js_select");
 const btnPlay = document.querySelector(".js_play");
-const btnReset = document.querySelector(".js_reiniciar");
+const btnReset = document.querySelector(".js_restart");
 const message = document.querySelector(".js_message");
-const moveCPU = document.querySelector(".js_puntos_cpu");
+const moveCPU = document.querySelector(".js_score_cpu");
 const pointsCPU = document.querySelector(".js_cpu_points");
 const pointsPlayer = document.querySelector(".js_player_points");
 const messageBox = document.querySelector(".message");
 
-// JUGADA CPU
+// CPU MOVE
 
 // Random num
 function getRandomNumber(max) {
   return Math.ceil(Math.random() * max);
 }
 
-// Obtener jugada
+// Get move
 function getComputerMove() {
   let number = getRandomNumber(9);
   let cpuMove = "";
 
   if (number <= 3) {
-    cpuMove = "piedra";
+    cpuMove = "rock";
   } else if (number >= 7) {
-    cpuMove = "papel";
+    cpuMove = "paper";
   } else {
-    cpuMove = "tijeras";
+    cpuMove = "scissors";
   }
   return cpuMove;
 }
 
-// COMPARAR JUGADAS
+// COMPARE MOVES
 
-//esto es para llevar la cuenta de los puntos y las jugadas
+// player and CPU score and number of moves
 let accPlayer = 0;
 let accCPU = 0;
-let jugadas = 0;
+let moves = 0;
 
-//Función para que aparezca el ganador en el mensaje
-function ganador() {
+// render winner msg
+function renderWinner() {
   if (accPlayer === accCPU) {
     messageBox.classList.add("message_win");
-    message.innerHTML = "Habéis empatado 😌";
+    message.innerHTML = "It's a tie! 😌";
   } else if (accPlayer > accCPU) {
     messageBox.classList.add("message_win");
-    message.innerHTML = "HAS GANADO 🥳";
+    message.innerHTML = "YOU WON 🥳";
   } else if (accPlayer < accCPU) {
     messageBox.classList.add("message_win");
-    message.innerHTML = "HAS PERDIDO 😁";
+    message.innerHTML = "YOU LOST 😁";
   }
 }
 
-// Evitar que se pueda seleccionar la opción placeholder
+// Avoid placeholder move
 function forceSelect() {
   let player = btnSelect.value;
 
-  if (player === "nada") {
+  if (player === "empty") {
     cpu = null;
-    jugadas = 0;
+    moves = 0;
   }
 }
 
-// Comparar jugadas con condicionales
+// Compare player and CPU moves
 function compareMoves(event) {
   event.preventDefault();
   let player = btnSelect.value;
@@ -72,49 +72,46 @@ function compareMoves(event) {
   forceSelect();
 
   if (player === cpu) {
-    message.innerHTML = "Empate";
+    message.innerHTML = "Tie";
   } else if (
-    (player === "piedra" && cpu === "tijeras") ||
-    (player === "papel" && cpu === "piedra") ||
-    (player === "tijeras" && cpu === "papel")
+    (player === "rock" && cpu === "scissors") ||
+    (player === "paper" && cpu === "rock") ||
+    (player === "scissors" && cpu === "paper")
   ) {
-    message.innerHTML = "¡Has ganado!";
+    message.innerHTML = "You won!";
     accPlayer++;
   } else {
-    message.innerHTML = "¡Has perdido!";
+    message.innerHTML = "You lost!";
     accCPU++;
   }
-
-  //esto es para llevar la cuenta de los puntos y las jugadas
-  jugadas++;
+  // score and moves account
+  moves++;
   pointsPlayer.innerHTML = accPlayer;
   pointsCPU.innerHTML = accCPU;
 
-  //esto es para que me muestre la jugada de la máquina
+  // render CPU move
   moveCPU.classList.remove("hidden");
-  moveCPU.innerHTML = "La máquina ha sacado " + cpu;
-  // console.log("jugador " + player);
-  // console.log("cpu " + cpu);
+  moveCPU.innerHTML = "CPU drew " + cpu;
 
-  //esto hace que termine la partida al llegar a 10 jugadas, como oculta el botón de Jugar y lo sustituye por Reiniciar, al no tener este botón preventDefault ni nada, al hacerle click se nos va a recargar la página y se reiniciará todo
-  if (jugadas === 10) {
+  // end game when reaching 10 moves, hide play button and show restart button
+  if (moves === 10) {
     btnPlay.classList.add("hidden");
     btnReset.classList.remove("hidden");
-    ganador();
+    renderWinner();
   }
 }
 
-// botón de reset
+// reset btn
 function handleReset(event) {
   event.preventDefault();
   btnReset.classList.add("hidden");
-  jugadas = 0;
+  moves = 0;
   accPlayer = 0;
   accCPU = 0;
   btnPlay.classList.remove("hidden");
   pointsPlayer.innerHTML = accPlayer;
   pointsCPU.innerHTML = accCPU;
-  message.innerHTML = "¡Vamos a jugar!";
+  message.innerHTML = "Let's play!";
   messageBox.classList.remove("message_win");
   moveCPU.classList.add("hidden");
 }
