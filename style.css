@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: grey;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    border: 5px solid palevioletred;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+h1 {
+    color: palevioletred;
+    font-size: 40px;
+    letter-spacing: 3px;
+}
+
+.emojis {
+    margin-bottom: 40px;
+    color: palevioletred;
+}
+
+.select_btn {
+    width: 200px;
+    height: 30px;
+}
+
+.button {
+    width: 70px;
+    height: 30px;
+    background-color: palevioletred;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.message {
+    width: 200px;
+    height: 40px;
+    background-color: rgb(255, 213, 220);
+    text-align: center;
+    margin-top: 40px;
+    border-radius: 5px;
+    padding-top: 9px;
+    font-weight: bold;
+}
+
+.message p {
+    color: palevioletred;
+}
+
+.message_win {
+    width: 200px;
+    height: 40px;
+    background-color: paleturquoise;
+    text-align: center;
+    margin-top: 40px;
+    border-radius: 5px;
+    padding-top: 9px;
+    font-weight: bold; 
+}
+
+.points {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.points p {
+    font-size: 18px;
+}
+
+.puntos_cpu {
+    height: 16px;
+}
+
+.hidden {
+    display: none;
+}
